@@ -7,17 +7,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     Userservice userservice;
 
-    @GetMapping(value="/user/{id}")
+    @GetMapping(value="{id}")
     public ResponseEntity getUser(@PathVariable("id")int id){
         return new ResponseEntity(userservice.getUser(id), HttpStatus.OK);
     }
